@@ -1,0 +1,26 @@
+namespace State
+
+module ConcurentStorage =
+    open System.Collections.Concurrent
+
+    type Key<'UniqueData> = Key of 'UniqueData
+
+    type private Storage<'UniqueData, 'State> = ConcurrentDictionary<Key<'UniqueData>, 'State>
+    type State<'UniqueData, 'State> = private State of Storage<'UniqueData, 'State>
+
+    let create<'UniqueData, 'State> () =
+        Storage<'UniqueData, 'State>()
+        |> State
+
+    let setState (State storage) key state =
+        storage.AddOrUpdate(key, state, fun _ _ -> state)
+        |> ignore
+
+    let addOrUpdateState (State storage) (update: Key<'a> -> 'b -> 'b -> 'b) key newState =
+        storage.AddOrUpdate(key, newState, (fun key currentState -> update key currentState newState))
+        |> ignore
+
+    let getState (State storage) key =
+        match storage.TryGetValue key with
+        | true, state -> Some state
+        | _ -> None
