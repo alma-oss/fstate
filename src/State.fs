@@ -24,3 +24,6 @@ module ConcurentStorage =
         match storage.TryGetValue key with
         | true, state -> Some state
         | _ -> None
+
+    let countAll (State storage) =
+        storage.Count
