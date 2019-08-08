@@ -27,3 +27,23 @@ module ConcurentStorage =
 
     let countAll (State storage) =
         storage.Count
+
+    [<RequireQualifiedAccess>]
+    module State =
+        let empty = create
+
+        let iter f (State storage) =
+            storage
+            |> Seq.map (fun kv -> kv.Key, kv.Value)
+            |> Seq.iter f
+
+        let lenght = countAll
+
+        let tryFind key storage =
+            key |> getState storage
+
+        let set key value storage =
+            value |> setState storage key
+
+        let update key value update storage =
+            value |> addOrUpdateState storage update key
