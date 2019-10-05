@@ -37,7 +37,7 @@ module ConcurentStorage =
             |> Seq.map (fun kv -> kv.Key, kv.Value)
             |> Seq.iter f
 
-        let lenght = countAll
+        let length = countAll
 
         let tryFind key storage =
             key |> getState storage
