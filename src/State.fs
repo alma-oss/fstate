@@ -1,6 +1,6 @@
 namespace State
 
-module ConcurentStorage =
+module ConcurrentStorage =
     open System.Collections.Concurrent
 
     type Key<'UniqueData> = Key of 'UniqueData
@@ -25,6 +25,12 @@ module ConcurentStorage =
         | true, state -> Some state
         | _ -> None
 
+    let getAllKeys (State storage) =
+        storage.Keys
+
+    let getAllValues (State storage) =
+        storage.Values
+
     let countAll (State storage) =
         storage.Count
 
@@ -37,7 +43,7 @@ module ConcurentStorage =
             |> Seq.map (fun kv -> kv.Key, kv.Value)
             |> Seq.iter f
 
-        let lenght = countAll
+        let length = countAll
 
         let tryFind key storage =
             key |> getState storage
@@ -47,3 +53,13 @@ module ConcurentStorage =
 
         let update key value update storage =
             value |> addOrUpdateState storage update key
+
+        let keys storage =
+            storage
+            |> getAllKeys
+            |> List.ofSeq
+
+        let values storage =
+            storage
+            |> getAllValues
+            |> List.ofSeq
