@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 2.0.0 - 2019-10-05
 - [**BC**] Fix typo in function name - `State.lenght` -> `State.length`
 - [**BC**] Fix typo in module name - `ConcurentStorage` -> `ConcurrentStorage`
 - Add functions to access keys and values:
