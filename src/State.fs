@@ -25,6 +25,12 @@ module ConcurrentStorage =
         | true, state -> Some state
         | _ -> None
 
+    let getAllKeys (State storage) =
+        storage.Keys
+
+    let getAllValues (State storage) =
+        storage.Values
+
     let countAll (State storage) =
         storage.Count
 
@@ -47,3 +53,13 @@ module ConcurrentStorage =
 
         let update key value update storage =
             value |> addOrUpdateState storage update key
+
+        let keys storage =
+            storage
+            |> getAllKeys
+            |> List.ofSeq
+
+        let values storage =
+            storage
+            |> getAllValues
+            |> List.ofSeq
