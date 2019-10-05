@@ -3,6 +3,7 @@
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
 - [**BC**] Fix typo in function name - `State.lenght` -> `State.length`
+- [**BC**] Fix typo in module name - `ConcurentStorage` -> `ConcurrentStorage`
 
 ## 1.3.0 - 2019-06-26
 - Add `ConcurentStorage.State` module to allow _limited_ collection-like access functions.
