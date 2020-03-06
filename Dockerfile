@@ -1,4 +1,4 @@
-FROM dcreg.service.consul/prod/development-dotnet-core-sdk-common:latest
+FROM dcreg.service.consul/prod/development-dotnet-core-sdk-common:2.2
 
 # build scripts
 COPY ./fake.sh /fstate/
@@ -10,6 +10,10 @@ COPY ./paket.lock /fstate/
 # sources
 COPY ./State.fsproj /fstate/
 COPY ./src /fstate/src
+
+# others
+COPY ./.git /fstate/.git
+COPY ./CHANGELOG.md /fstate/
 
 WORKDIR /fstate
 

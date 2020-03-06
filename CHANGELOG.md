@@ -2,6 +2,10 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `State.items` function
+- Add `Key.value` function
+- Change git host
+- Add `AssemblyInfo`
 
 ## 2.0.0 - 2019-10-05
 - [**BC**] Fix typo in function name - `State.lenght` -> `State.length`
