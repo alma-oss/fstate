@@ -4,6 +4,8 @@
 ## Unreleased
 - Add `State.items` function
 - Add `Key.value` function
+- Change git host
+- Add `AssemblyInfo`
 
 ## 2.0.0 - 2019-10-05
 - [**BC**] Fix typo in function name - `State.lenght` -> `State.length`

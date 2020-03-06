@@ -6,7 +6,7 @@
     <OutputType>Library</OutputType>
     <PackageId>Lmc.State</PackageId>
     <Version>2.0.0</Version>
-    <RepositoryUrl>https://stash.int.lmc.cz/projects/ARCHI/repos/fstate/browse</RepositoryUrl>
+    <RepositoryUrl>https://bitbucket.lmc.cz/projects/ARCHI/repos/fstate/browse</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
