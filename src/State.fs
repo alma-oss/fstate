@@ -5,6 +5,10 @@ module ConcurrentStorage =
 
     type Key<'UniqueData> = Key of 'UniqueData
 
+    [<RequireQualifiedAccess>]
+    module Key =
+        let value (Key key) = key
+
     type private Storage<'UniqueData, 'State> = ConcurrentDictionary<Key<'UniqueData>, 'State>
     type State<'UniqueData, 'State> = private State of Storage<'UniqueData, 'State>
 
@@ -63,3 +67,8 @@ module ConcurrentStorage =
             storage
             |> getAllValues
             |> List.ofSeq
+
+        let items storage =
+            storage
+            |> values
+            |> List.zip (storage |> keys)
