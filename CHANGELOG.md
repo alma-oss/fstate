@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 2.2.0 - 2020-03-27
 - Add `State.tryRemove` function
 
 ## 2.1.0 - 2020-03-06
