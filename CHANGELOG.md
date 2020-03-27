@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 2.3.0 - 2020-03-27
 - Add `State.clear` function
 
 ## 2.2.0 - 2020-03-27
