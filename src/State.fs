@@ -72,3 +72,7 @@ module ConcurrentStorage =
             storage
             |> values
             |> List.zip (storage |> keys)
+
+        let tryRemove key (State storage) =
+            storage.TryRemove(key)
+            |> ignore
