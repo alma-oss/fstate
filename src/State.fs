@@ -76,3 +76,6 @@ module ConcurrentStorage =
         let tryRemove key (State storage) =
             storage.TryRemove(key)
             |> ignore
+
+        let clear (State storage) =
+            storage.Clear()
