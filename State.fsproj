@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Compile Include="src/State.fs" />
+    <Compile Include="src/TemporaryCache.fs" />
   </ItemGroup>
 
   <Import Project=".paket\Paket.Restore.targets" />
