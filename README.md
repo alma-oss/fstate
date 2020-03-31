@@ -87,6 +87,62 @@ module Example =
         // prints: "State for John is Knows nothing"
 ```
 
+## Temporary Cache
+
+### Load and debounce
+```fs
+let private searchFreshData api = asyncResult {
+    return! api |> executeSearch
+}
+
+let loadData api =
+    TemporaryCache.Millisecond.ofMinutes 5
+    |> TemporaryCache.debounceLoad "api.data" (fun () -> searchFreshData api)
+
+let example () =
+    asyncResult {
+        let api = "..."
+
+        let! data = loadData api        // fresh data loaded and cached for 5 minutes
+        let! data = loadData api        // data loaded from cache and cache is debounce for another 5 minutes
+
+        do! Async.Sleep(4 * 60 * 1000)  // wait for 4 minutes
+        let! data = loadData api        // data loaded from cache and cache is debounce for another 5 minutes
+
+        do! Async.Sleep(4 * 60 * 1000)  // wait for 4 minutes
+        let! data = loadData api        // data loaded from cache and cache is debounce for another 5 minutes
+
+        return data                     // data old for 8 minutes now
+    }
+```
+
+### Load
+```fs
+let private searchFreshData api = asyncResult {
+    return! api |> executeSearch
+}
+
+let loadData api =
+    TemporaryCache.Millisecond.ofMinutes 5
+    |> TemporaryCache.load "api.data" (fun () -> searchFreshData api)
+
+let example () =
+    asyncResult {
+        let api = "..."
+
+        let! data = loadData api        // fresh data loaded and cached for 5 minutes
+        let! data = loadData api        // data loaded from cache
+
+        do! Async.Sleep(4 * 60 * 1000)  // wait for 4 minutes
+        let! data = loadData api        // data loaded from cache
+
+        do! Async.Sleep(4 * 60 * 1000)  // wait for 4 minutes
+        let! data = loadData api        // fresh data loaded and cached for 5 minutes
+
+        return data                     // data old for just a few milliseconds
+    }
+```
+
 ## Release
 1. Increment version in `State.fsproj`
 2. Update `CHANGELOG.md`
