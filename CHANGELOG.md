@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add `State.keepLastSortedBy` function
+- Add tests
 
 ## 2.4.0 - 2020-03-31
 - Add `TemporaryCache` module
