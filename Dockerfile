@@ -1,21 +1,24 @@
 FROM dcreg.service.consul/prod/development-dotnet-core-sdk-common:2.2
 
 # build scripts
-COPY ./fake.sh /fstate/
-COPY ./build.fsx /fstate/
-COPY ./paket.dependencies /fstate/
-COPY ./paket.references /fstate/
-COPY ./paket.lock /fstate/
+COPY ./fake.sh /library/
+COPY ./build.fsx /library/
+COPY ./paket.dependencies /library/
+COPY ./paket.references /library/
+COPY ./paket.lock /library/
 
 # sources
-COPY ./State.fsproj /fstate/
-COPY ./src /fstate/src
+COPY ./State.fsproj /library/
+COPY ./src /library/src
+
+# copy tests
+COPY ./tests /library/tests
 
 # others
-COPY ./.git /fstate/.git
-COPY ./CHANGELOG.md /fstate/
+COPY ./.git /library/.git
+COPY ./CHANGELOG.md /library/
 
-WORKDIR /fstate
+WORKDIR /library
 
 RUN \
     ./fake.sh build target Build no-clean

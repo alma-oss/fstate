@@ -79,3 +79,32 @@ module ConcurrentStorage =
 
         let clear (State storage) =
             storage.Clear()
+
+        let keepLastSortedBy toKeep f state =
+            if toKeep <= 0 then empty()
+            else
+                match state |> length with
+                | underLimit when underLimit <= toKeep -> state
+                | overLimit ->
+                    let toDelete = overLimit - toKeep
+
+                    if toDelete >= toKeep
+                        then // (to delete >= to keep) -> just copy those to keep (create new)
+                            let newState = empty()
+
+                            state
+                            |> items
+                            |> Seq.sortByDescending f
+                            |> Seq.take toKeep
+                            |> Seq.iter (fun (k, v) -> newState |> set k v)
+
+                            newState
+
+                        else // (to delete < to keep)  -> just remove those to delete
+                            state
+                            |> items
+                            |> Seq.sortBy f
+                            |> Seq.take toDelete
+                            |> Seq.iter (fun (k, _) -> state |> tryRemove k)
+
+                            state
