@@ -2,6 +2,8 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+
+## 2.5.0 - 2020-04-20
 - Add `State.keepLastSortedBy` function
 - Add tests
 

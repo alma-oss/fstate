@@ -176,6 +176,7 @@ Target.create "Lint" <| skipOn "no-lint" (fun _ ->
         |> check
 
     !! "**/*.fsproj"
+    -- "tests/*.fsproj" // todo - it doesnt work locally
     |> Seq.map (fun fsproj ->
         match toolsDir with
         | Global ->
