@@ -1,4 +1,4 @@
-namespace State
+namespace Lmc.State
 
 module ConcurrentStorage =
     open System.Collections.Concurrent

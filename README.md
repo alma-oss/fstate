@@ -21,7 +21,7 @@ Lmc.State
 
 ```fs
 module Example =
-    open State.ConcurentStorage
+    open Lmc.State.ConcurentStorage
 
     let doSomething () =
         //

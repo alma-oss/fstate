@@ -2,6 +2,9 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Update dependencies
+- [**BC**] Use .netcore 3.1
+- [**BC**] Change namespace to `Lmc.State`
 
 ## 2.5.0 - 2020-04-20
 - Add `State.keepLastSortedBy` function
