@@ -1,8 +1,7 @@
-module State.Tests
+module Lmc.State.Tests
 
 open Expecto
-open State
-open State.ConcurrentStorage
+open Lmc.State.ConcurrentStorage
 
 type KeepTestData = {
     InitialState: State<int, string>

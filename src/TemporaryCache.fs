@@ -1,4 +1,6 @@
-namespace State
+namespace Lmc.State
+
+open Lmc.ErrorHandling
 
 type CacheData = CacheData of obj
 
@@ -15,7 +17,7 @@ module LoadError =
 [<RequireQualifiedAccess>]
 module TemporaryCache =
     open System
-    open State.ConcurrentStorage
+    open Lmc.State.ConcurrentStorage
 
     type [<Measure>] Millisecond
 
