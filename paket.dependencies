@@ -5,7 +5,7 @@ nuget FSharp.Core
 
 git ssh://git@bitbucket.lmc.cz:7999/archi/nuget-server.git master Packages: /nuget/
 # LMC Nuget dependencies:
-nuget Lmc.ErrorHandling ~> 4.0
+nuget Lmc.ErrorHandling ~> 5.0
 
 group Tests
     storage: none
