@@ -1,5 +1,5 @@
 // ========================================================================================================
-// === F# / Project fake build ==================================================================== 1.0.0 =
+// === F# / Project fake build ==================================================================== 1.1.0 =
 // --------------------------------------------------------------------------------------------------------
 // Options:
 //  - no-clean   - disables clean of dirs in the first step (required on CI)
@@ -19,8 +19,8 @@ let main args =
 
     Targets.init {
         Project = {
-            Name = "Lmc.State"
-            Summary = "Library for handling internal memory state (_concurently, etc._)."
+            Name = "Alma.State"
+            Summary = "Library for handling internal memory state (_concurrently, etc._)."
             Git = Git.init ()
         }
         Specs = Spec.defaultLibrary

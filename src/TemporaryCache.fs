@@ -1,6 +1,6 @@
-namespace Lmc.State
+namespace Alma.State
 
-open Lmc.ErrorHandling
+open Alma.ErrorHandling
 
 type CacheData = CacheData of obj
 
@@ -17,7 +17,7 @@ module LoadError =
 [<RequireQualifiedAccess>]
 module TemporaryCache =
     open System
-    open Lmc.State.ConcurrentStorage
+    open Alma.State.ConcurrentStorage
 
     type [<Measure>] Millisecond
 
