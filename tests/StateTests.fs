@@ -1,7 +1,7 @@
-module Lmc.State.Tests
+module Alma.State.Tests
 
 open Expecto
-open Lmc.State.ConcurrentStorage
+open Alma.State.ConcurrentStorage
 
 type KeepTestData = {
     InitialState: State<int, string>
