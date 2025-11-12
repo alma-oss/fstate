@@ -149,6 +149,39 @@ let example () =
     }
 ```
 
+### Load with TTL
+```fs
+let getOAuthToken () = asyncResult {
+    return {|
+        Token = "token"
+        Expires = 84000
+    |}
+}
+
+let loadToken () =
+    TemporaryCache.loadWithTTL "oauth.token" (fun () -> asyncResult {
+        let! tokenInfo = getOAuthToken()
+
+        return {
+            Data = tokenInfo.Token
+            CacheFor = System.TimeSpan.FromSeconds(float tokenInfo.Expires)
+        }
+    })
+
+let example () =
+    asyncResult {
+        // first call loads fresh token and caches it for tokenInfo.Expires seconds
+        let! token1 = loadToken ()
+        printfn "Got token: %s" token1
+
+        // subsequent call (within TTL) returns cached token
+        let! token2 = loadToken ()
+        printfn "Got token again: %s" token2
+
+        return token2
+    }
+```
+
 ## Release
 1. Increment version in `State.fsproj`
 2. Update `CHANGELOG.md`
