@@ -23,8 +23,8 @@ module TemporaryCache =
 
     [<RequireQualifiedAccess>]
     module Millisecond =
-        let ofMillisecond (miliseconds: int) =
-            miliseconds * 1<Millisecond>
+        let ofMillisecond (milliseconds: int) =
+            milliseconds * 1<Millisecond>
 
         let ofSeconds seconds =
             seconds * 1000 |> ofMillisecond
@@ -91,3 +91,32 @@ module TemporaryCache =
             OnCacheItemLoaded = ignore
         }
         |> loadData key loadFreshData ttl
+
+    type TemporaryCacheResult<'Data> = {
+        Data: 'Data
+        CacheFor: TimeSpan
+    }
+
+    let loadWithTTL<'Data, 'Error> key (loadFreshData: unit -> AsyncResult<TemporaryCacheResult<'Data>, 'Error>) = asyncResult {
+        let key = Key (CacheKey key)
+
+        match cache |> State.tryFind key with
+        | Some (CacheData data) ->
+            match data with
+            | :? 'Data as data -> return data
+            | _ -> return! InvalidTypeOfData |> AsyncResult.ofError
+        | _ ->
+            let! freshData = loadFreshData() |> AsyncResult.mapError LoadFreshDataError
+            let ttl = freshData.CacheFor.TotalMilliseconds |> int |> Millisecond.ofMillisecond
+
+            cache |> State.set key (CacheData freshData.Data)
+            debounce key ttl
+            dispose key |> Async.Start
+
+            return freshData.Data
+    }
+
+    let invalidate key =
+        let key = Key (CacheKey key)
+        cache |> State.tryRemove key
+        ttls |> State.tryRemove key

@@ -2,6 +2,9 @@
 
 <!-- There is always Unreleased section on the top. Subsections (Add, Changed, Fix, Removed) should be Add as needed. -->
 ## Unreleased
+- Add functions
+    - `TemporaryCache.loadWithTTL`
+    - `TemporaryCache.invalidate`
 
 ## 9.1.0 - 2025-03-17
 - Update dependencies
