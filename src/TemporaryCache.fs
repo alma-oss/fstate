@@ -1,6 +1,6 @@
 namespace Alma.State
 
-open Alma.ErrorHandling
+open Feather.ErrorHandling
 
 type CacheData = CacheData of obj
 
