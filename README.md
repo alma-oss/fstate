@@ -1,22 +1,13 @@
 F-State
 =======
 
+[![NuGet](https://img.shields.io/nuget/v/Alma.State.svg)](https://www.nuget.org/packages/Alma.State)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/Alma.State.svg)](https://www.nuget.org/packages/Alma.State)
+[![Tests](https://github.com/alma-oss/fstate/actions/workflows/tests.yaml/badge.svg)](https://github.com/alma-oss/fstate/actions/workflows/tests.yaml)
+
 Library for handling internal memory state (_concurrently, etc._).
 
 ## Install
-
-Add following into `paket.dependencies`
-```
-source https://nuget.pkg.github.com/almacareer/index.json username: "%PRIVATE_FEED_USER%" password: "%PRIVATE_FEED_PASS%"
-# LMC Nuget dependencies:
-nuget Alma.State
-```
-
-NOTE: For local development, you have to create ENV variables with your github personal access token.
-```sh
-export PRIVATE_FEED_USER='{GITHUB USERNANME}'
-export PRIVATE_FEED_PASS='{TOKEN}'	# with permissions: read:packages
-```
 
 Add following into `paket.references`
 ```

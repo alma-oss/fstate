@@ -6,8 +6,11 @@
     <OutputType>Library</OutputType>
     <PackageId>Alma.State</PackageId>
     <Version>9.2.0</Version>
-    <RepositoryUrl>https://github.com/almacareer/prc-fstate.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/almacareer/prc-fstate</PackageProjectUrl>
+    <Authors>Almacareer</Authors>
+    <Description>Library for handling internal memory state (_concurrently, etc._).</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/alma-oss/fstate.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/alma-oss/fstate</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
