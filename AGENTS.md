@@ -1,5 +1,9 @@
 # AGENTS.md — Alma.State
 
+## Agent Skills
+
+This repo ships Agent Skill for the `Alma.State` library. Compatible agents discover it automatically; see `.agents/skills/fstate/SKILL.md`.
+
 ## Project Purpose
 
 F# library for handling in-memory state management with concurrency support. Provides thread-safe concurrent storage (key-value store with add/update semantics) and a temporary cache with configurable TTL and debounce-based loading. Published as NuGet package `Alma.State`.
