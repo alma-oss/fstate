@@ -41,6 +41,7 @@ module TemporaryCache =
     let private debounce key (ttl: int<Millisecond>) =
         ttls |> State.set key (DateTime.Now.AddMilliseconds(ttl |> float) |> TTL)
 
+    [<TailCall>]
     let rec private dispose key = async {
         match cache |> State.tryFind key, ttls |> State.tryFind key with
         | Some _, Some (TTL passedDue) when passedDue <= DateTime.Now ->
